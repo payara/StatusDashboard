@@ -1,0 +1,159 @@
+ui:
+  title: "Payara | Status Dashboard"
+  header: "Payara System Status"
+  logo: "https://raw.githubusercontent.com/JamesHillyard/StatusDashboard/main/payara-logo.png"
+
+alerting:
+  teams:
+    webhook-url: "{WEBHOOK_URL}"
+    default-alert:
+      description: ""
+      send-on-resolved: true
+      failure-threshold: 3
+      success-threshold: 1
+
+
+endpoints:
+  # Website Group
+  - name: Payara Website
+    url: https://payara.fish
+    group: website
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
+
+  # Development Infrastructure Group
+  - name: Engineering Jenkins
+    url: https://jenkins.payara.fish
+    interval: 30s
+    group: development-infrastructure
+    conditions:
+      - "[STATUS] == 200"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
+  - name: New Engineering Jenkins
+    url: http://52.50.149.198:8080/
+    interval: 30s
+    group: development-infrastructure
+    conditions:
+      - "[STATUS] == 200"
+      # - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+  
+  - name: Service Jenkins
+    url: https://servicejenkins.payara.fish/login
+    interval: 30s
+    group: development-infrastructure
+    conditions:
+      - "[STATUS] == 200"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
+
+  # Customer Infrastructure Group
+  - name: Nexus
+    url: https://nexus.payara.fish
+    group: customer-infrastructure
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
+  - name: Documentation
+    url: https://docs.payara.fish
+    group: customer-infrastructure
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
+  - name: Support Portal
+    url: https://support.payara.fish
+    group: customer-infrastructure
+    interval: 30s
+    conditions:
+      - "[STATUS] == any(200, 403)"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
+
+  # Phonehome
+  - name: PhoneHome Grafana
+    url: http://52.213.212.227:3000/
+    interval: 30s
+    group: phonehome
+    conditions:
+      - "[STATUS] == 200"
+      # - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
+  - name: PhoneHome InfluxDB
+    url: http://52.213.212.227:8086/
+    interval: 30s
+    group: phonehome
+    conditions:
+      - "[STATUS] == 200"
+      # - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
+  - name: PhoneHome Data Intake
+    url: https://payara.fish/phonehome
+    interval: 30s
+    group: phonehome
+    conditions:
+      - "[STATUS] == 204"
+    alerts:
+      - type: teams
+
+
+  # Core IT
+  - name: Payara Atlassian
+    url: https://payara.atlassian.net
+    interval: 30s
+    group: core-it
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: teams
+
+  - name: Harvest
+    url: https://payara.harvestapp.com
+    interval: 30s
+    group: core-it
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: teams
+
+  - name: BambooHR
+    url: https://payara.bamboohr.com
+    interval: 30s
+    group: core-it
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: teams
+
+  - name: Sharepoint
+    url: https://c2b2.sharepoint.com
+    interval: 30s
+    group: core-it
+    conditions:
+      - "[STATUS] == any(200, 403)"
+    alerts:
+      - type: teams
