@@ -1,7 +1,7 @@
 ui:
   title: "Payara | Status Dashboard"
   header: "Payara System Status"
-  logo: "https://raw.githubusercontent.com/JamesHillyard/StatusDashboard/main/payara-logo.png"
+  logo: "https://raw.githubusercontent.com/Payara/StatusDashboard/main/payara-logo.png"
 
 alerting:
   teams:
