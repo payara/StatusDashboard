@@ -69,6 +69,16 @@ endpoints:
     alerts:
       - type: teams
 
+  - name: New Service Nexus
+    url: http://13.43.158.167:8081/
+    group: customer-infrastructure
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
+      # - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
   - name: Documentation
     url: https://docs.payara.fish
     group: customer-infrastructure
