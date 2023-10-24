@@ -38,12 +38,12 @@ endpoints:
       - type: teams
 
   - name: New Engineering Jenkins
-    url: http://52.50.149.198:8080/
+    url: https://engineeringjenkins.payara.fish
     interval: 30s
     group: development-infrastructure
     conditions:
       - "[STATUS] == 200"
-      # - "[CERTIFICATE_EXPIRATION] > 648h"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
     alerts:
       - type: teams
   
@@ -70,12 +70,12 @@ endpoints:
       - type: teams
 
   - name: New Service Nexus
-    url: http://13.43.158.167:8081/
+    url: https://servicenexus.payara.fish
     group: customer-infrastructure
     interval: 30s
     conditions:
       - "[STATUS] == 200"
-      # - "[CERTIFICATE_EXPIRATION] > 648h"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
     alerts:
       - type: teams
 
