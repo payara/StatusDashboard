@@ -110,7 +110,7 @@ endpoints:
       - type: teams
 
   - name: Payara Starter
-    url: https://starter.payara.fish
+    url: https://start.payara.fish
     group: customer-infrastructure
     interval: 30s
     conditions:
