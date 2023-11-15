@@ -37,6 +37,16 @@ endpoints:
     alerts:
       - type: teams
 
+  - name: Engineering Nexus
+    url: https://nexus.dev.payara.fish
+    interval: 30s
+    group: development-infrastructure
+    conditions:
+      - "[STATUS] == 200"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
   - name: New Engineering Jenkins
     url: https://engineeringjenkins.payara.fish
     interval: 30s
