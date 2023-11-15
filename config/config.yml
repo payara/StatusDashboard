@@ -109,6 +109,16 @@ endpoints:
     alerts:
       - type: teams
 
+  - name: Payara Starter
+    url: https://starter.payara.fish
+    group: customer-infrastructure
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
+      - "[CERTIFICATE_EXPIRATION] > 648h"
+    alerts:
+      - type: teams
+
 
   # Phonehome
   - name: PhoneHome Grafana
