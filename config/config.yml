@@ -10,7 +10,7 @@ alerting:
       description: ""
       send-on-resolved: true
       failure-threshold: 3
-      success-threshold: 1
+      success-threshold: 3
 
 
 endpoints:
@@ -27,16 +27,6 @@ endpoints:
 
 
   # Development Infrastructure Group
-  - name: Engineering Jenkins
-    url: https://jenkins.payara.fish
-    interval: 30s
-    group: development-infrastructure
-    conditions:
-      - "[STATUS] == 200"
-      - "[CERTIFICATE_EXPIRATION] > 648h"
-    alerts:
-      - type: teams
-
   - name: Engineering Nexus
     url: https://nexus.dev.payara.fish
     interval: 30s
@@ -69,16 +59,6 @@ endpoints:
 
 
   # Customer Infrastructure Group
-  - name: Nexus
-    url: https://nexus.payara.fish
-    group: customer-infrastructure
-    interval: 30s
-    conditions:
-      - "[STATUS] == 200"
-      - "[CERTIFICATE_EXPIRATION] > 648h"
-    alerts:
-      - type: teams
-
   - name: Documentation
     url: https://docs.payara.fish
     group: customer-infrastructure
@@ -144,7 +124,7 @@ endpoints:
   # Core IT
   - name: Payara Atlassian
     url: https://payara.atlassian.net
-    interval: 30s
+    interval: 5m
     group: core-it
     conditions:
       - "[STATUS] == 200"
@@ -153,7 +133,7 @@ endpoints:
 
   - name: Harvest
     url: https://payara.harvestapp.com
-    interval: 30s
+    interval: 5m
     group: core-it
     conditions:
       - "[STATUS] == 200"
@@ -162,7 +142,7 @@ endpoints:
 
   - name: BambooHR
     url: https://payara.bamboohr.com
-    interval: 30s
+    interval: 5m
     group: core-it
     conditions:
       - "[STATUS] == 200"
@@ -171,7 +151,7 @@ endpoints:
 
   - name: Sharepoint
     url: https://c2b2.sharepoint.com
-    interval: 30s
+    interval: 5m
     group: core-it
     conditions:
       - "[STATUS] == any(200, 403)"
