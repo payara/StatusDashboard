@@ -8,7 +8,7 @@ services:
     volumes:
       - ./config:/config
   nginx:
-    image: nginx:1.25.3
+    image: nginx:1.25.4
     ports:
       # Expose Ports 80 (HTTP) and 443 (HTTPS)
       - "80:80"
@@ -18,7 +18,7 @@ services:
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/letsencrypt/:ro
   certbot:
-    image: certbot/certbot:v2.8.0
+    image: certbot/certbot:v2.9.0
     volumes:
       - ./certbot/www/:/var/www/certbot/:rw
       - ./certbot/conf/:/etc/letsencrypt/:rw
