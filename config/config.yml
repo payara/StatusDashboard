@@ -167,3 +167,12 @@ endpoints:
       - "[STATUS] == any(200, 403)"
     alerts:
       - type: teams
+
+  - name: Leapsome
+    url: https://www.leapsome.com/app/#/dashboard
+    group: core-it
+    interval: 5m
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: teams
